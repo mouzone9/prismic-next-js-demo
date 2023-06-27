@@ -1,16 +1,32 @@
 {
   "id": "home",
-  "label": "home",
+  "label": "Home",
   "format": "page",
-  "repeatable": true,
+  "repeatable": false,
   "status": true,
   "json": {
     "Main": {
-      "uid": { "config": { "label": "UID" }, "type": "UID" },
+      "uid": {
+        "type": "UID",
+        "config": { "label": "homeId", "placeholder": "" }
+      },
+      "domain": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Domain",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "paragraph"
+        }
+      },
+      "test": {
+        "type": "Text",
+        "config": { "label": "Test", "placeholder": "" }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
-        "config": { "choices": { "homepage": { "type": "SharedSlice" } } }
+        "config": { "choices": { "home_slice": { "type": "SharedSlice" } } }
       }
     },
     "SEO & Metadata": {

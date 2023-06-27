@@ -1,0 +1,56 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Influence",
+							"spans": []
+						},
+						"direction": "ltr"
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation aliquip exercitation occaecat qui fugiat elit excepteur nisi esse id in Lorem ullamco aliquip consequat."
+						}
+					}
+				]
+			},
+			"blogimage": {
+				"origin": {
+					"id": "yPI38imbQSI",
+					"url": "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxN3x8ZnJ1aXR8ZW58MHx8fHwxNjg3ODE4NDY0fDA&ixlib=rb-4.0.3&q=85",
+					"width": 3213,
+					"height": 4819
+				},
+				"url": "https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxN3x8ZnJ1aXR8ZW58MHx8fHwxNjg3ODE4NDY0fDA&ixlib=rb-4.0.3&q=85",
+				"width": 3213,
+				"height": 4819,
+				"edit": {
+					"background": "transparent",
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					}
+				},
+				"credits": null,
+				"alt": "YEEHH",
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			}
+		},
+		"items": []
+	}
+]

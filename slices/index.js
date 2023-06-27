@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  homepage: dynamic(() => import("./Homepage")),
+  home_slice: dynamic(() => import("./HomeSlice")),
+  navbar: dynamic(() => import("./NavbarItem")),
 };

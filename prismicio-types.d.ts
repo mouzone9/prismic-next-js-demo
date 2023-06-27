@@ -5,10 +5,32 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
   [KeyType in keyof T]: T[KeyType];
 };
-/** Content for home documents */
+/** Content for Home documents */
 interface HomeDocumentData {
   /**
-   * Slice Zone field in *home*
+   * Domain field in *Home*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.domain
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  domain: prismic.RichTextField;
+  /**
+   * Test field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.test
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  test: prismic.KeyTextField;
+  /**
+   * Slice Zone field in *Home*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -19,7 +41,7 @@ interface HomeDocumentData {
    */
   slices: prismic.SliceZone<HomeDocumentDataSlicesSlice>;
   /**
-   * Meta Description field in *home*
+   * Meta Description field in *Home*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -30,7 +52,7 @@ interface HomeDocumentData {
    */
   meta_description: prismic.KeyTextField;
   /**
-   * Meta Image field in *home*
+   * Meta Image field in *Home*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -41,7 +63,7 @@ interface HomeDocumentData {
    */
   meta_image: prismic.ImageField<never>;
   /**
-   * Meta Title field in *home*
+   * Meta Title field in *Home*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -53,78 +75,292 @@ interface HomeDocumentData {
   meta_title: prismic.KeyTextField;
 }
 /**
- * Slice for *home → Slice Zone*
+ * Slice for *Home → Slice Zone*
  *
  */
-type HomeDocumentDataSlicesSlice = HomepageSlice;
+type HomeDocumentDataSlicesSlice = HomeSliceSlice;
 /**
- * home document from Prismic
+ * Home document from Prismic
  *
  * - **API ID**: `home`
- * - **Repeatable**: `true`
+ * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HomeDocumentData>, "home", Lang>;
-export type AllDocumentTypes = HomeDocument;
-/**
- * Primary content in Homepage → Primary
- *
- */
-interface HomepageSliceDefaultPrimary {
+/** Content for home_custom_type documents */
+interface HomeCustomTypeDocumentData {
   /**
-   * Title field in *Homepage → Primary*
+   * title field in *home_custom_type*
    *
    * - **Field Type**: Title
-   * - **Placeholder**: A nice description of your feature
-   * - **API ID Path**: homepage.primary.title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_custom_type.title
+   * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
   title: prismic.TitleField;
   /**
-   * Body field in *Homepage → Primary*
+   * description field in *home_custom_type*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: A nice day to setup prismic and next js 13 project
-   * - **API ID Path**: homepage.primary.body
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_custom_type.description
+   * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  body: prismic.RichTextField;
+  description: prismic.RichTextField;
+  /**
+   * Text field in *home_custom_type*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_custom_type.text[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   *
+   */
+  text: prismic.GroupField<Simplify<HomeCustomTypeDocumentDataTextItem>>;
 }
 /**
- * Default variation for Homepage Slice
+ * Item in home_custom_type → Text
+ *
+ */
+export interface HomeCustomTypeDocumentDataTextItem {
+  /**
+   * text2 field in *home_custom_type → Text*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_custom_type.text[].text2
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text2: prismic.RichTextField;
+  /**
+   * text3 field in *home_custom_type → Text*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_custom_type.text[].text3
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text3: prismic.RichTextField;
+}
+/**
+ * home_custom_type document from Prismic
+ *
+ * - **API ID**: `home_custom_type`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomeCustomTypeDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<HomeCustomTypeDocumentData>,
+    "home_custom_type",
+    Lang
+  >;
+/** Content for Navigation documents */
+interface NavigationDocumentData {
+  /**
+   * Name field in *Navigation*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  name: prismic.RichTextField;
+  /**
+   * Slice Zone field in *Navigation*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Navigation → Slice Zone*
+ *
+ */
+type NavigationDocumentDataSlicesSlice = NavbarSlice;
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<NavigationDocumentData>,
+    "navigation",
+    Lang
+  >;
+export type AllDocumentTypes =
+  | HomeDocument
+  | HomeCustomTypeDocument
+  | NavigationDocument;
+/**
+ * Primary content in HomeSlice → Primary
+ *
+ */
+interface HomeSliceSliceDefaultPrimary {
+  /**
+   * Title field in *HomeSlice → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Je suis le titre
+   * - **API ID Path**: home_slice.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.TitleField;
+  /**
+   * Description field in *HomeSlice → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Je suis la description
+   * - **API ID Path**: home_slice.primary.description
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  description: prismic.RichTextField;
+  /**
+   * BlogImage field in *HomeSlice → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_slice.primary.blogimage
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  blogimage: prismic.ImageField<never>;
+}
+/**
+ * Default variation for HomeSlice Slice
  *
  * - **API ID**: `default`
  * - **Description**: `Default`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HomepageSliceDefault = prismic.SharedSliceVariation<
+export type HomeSliceSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<HomepageSliceDefaultPrimary>,
+  Simplify<HomeSliceSliceDefaultPrimary>,
   never
 >;
 /**
- * Slice variation for *Homepage*
+ * Slice variation for *HomeSlice*
  *
  */
-type HomepageSliceVariation = HomepageSliceDefault;
+type HomeSliceSliceVariation = HomeSliceSliceDefault;
 /**
- * Homepage Shared Slice
+ * HomeSlice Shared Slice
  *
- * - **API ID**: `homepage`
- * - **Description**: `Homepage`
+ * - **API ID**: `home_slice`
+ * - **Description**: `HomeSlice`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type HomepageSlice = prismic.SharedSlice<
-  "homepage",
-  HomepageSliceVariation
+export type HomeSliceSlice = prismic.SharedSlice<
+  "home_slice",
+  HomeSliceSliceVariation
 >;
+/**
+ * Primary content in NavbarItem → Primary
+ *
+ */
+interface NavbarSliceDefaultPrimary {
+  /**
+   * Name field in *NavbarItem → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.primary.name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  name: prismic.RichTextField;
+  /**
+   * Slug field in *NavbarItem → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.primary.slug
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  slug: prismic.KeyTextField;
+}
+/**
+ * Item in NavbarItem → Items
+ *
+ */
+export interface NavbarSliceDefaultItem {
+  /**
+   * Child Name field in *NavbarItem → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.items[].child_name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  child_name: prismic.RichTextField;
+  /**
+   * Child Slug field in *NavbarItem → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navbar.items[].slug
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  slug: prismic.KeyTextField;
+}
+/**
+ * Default variation for NavbarItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavbarSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<NavbarSliceDefaultPrimary>,
+  Simplify<NavbarSliceDefaultItem>
+>;
+/**
+ * Slice variation for *NavbarItem*
+ *
+ */
+type NavbarSliceVariation = NavbarSliceDefault;
+/**
+ * NavbarItem Shared Slice
+ *
+ * - **API ID**: `navbar`
+ * - **Description**: `Navbar`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavbarSlice = prismic.SharedSlice<"navbar", NavbarSliceVariation>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -137,11 +373,22 @@ declare module "@prismicio/client" {
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
       HomeDocument,
+      HomeCustomTypeDocumentData,
+      HomeCustomTypeDocumentDataTextItem,
+      HomeCustomTypeDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataSlicesSlice,
+      NavigationDocument,
       AllDocumentTypes,
-      HomepageSliceDefaultPrimary,
-      HomepageSliceDefault,
-      HomepageSliceVariation,
-      HomepageSlice,
+      HomeSliceSliceDefaultPrimary,
+      HomeSliceSliceDefault,
+      HomeSliceSliceVariation,
+      HomeSliceSlice,
+      NavbarSliceDefaultPrimary,
+      NavbarSliceDefaultItem,
+      NavbarSliceDefault,
+      NavbarSliceVariation,
+      NavbarSlice,
     };
   }
 }

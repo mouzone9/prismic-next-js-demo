@@ -12,6 +12,14 @@ yarn dev
 pnpm dev
 ```
 
+## Prismic Setup
+
+You can run the prismic slicemachine by running this:
+```bash
+npm run slicemachine
+```
+Open [http://localhost:9999](http://localhost:9999) for see the slicemachine with your browser to see the result.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.

@@ -1,8 +1,8 @@
 {
-  "id": "homepage",
+  "id": "home_slice",
   "type": "SharedSlice",
-  "name": "Homepage",
-  "description": "Homepage",
+  "name": "HomeSlice",
+  "description": "HomeSlice",
   "variations": [
     {
       "id": "default",
@@ -16,18 +16,26 @@
           "type": "StructuredText",
           "config": {
             "label": "Title",
-            "placeholder": "A nice description of your feature",
+            "placeholder": "Je suis le titre",
             "allowTargetBlank": true,
             "single": "heading1"
           }
         },
-        "body": {
+        "description": {
           "type": "StructuredText",
           "config": {
-            "label": "Body",
-            "placeholder": "A nice day to setup prismic and next js 13 project",
+            "label": "Description",
+            "placeholder": "Je suis la description",
             "allowTargetBlank": true,
             "single": "paragraph"
+          }
+        },
+        "blogimage": {
+          "type": "Image",
+          "config": {
+            "label": "BlogImage",
+            "constraint": { "width": null },
+            "thumbnails": []
           }
         }
       },
