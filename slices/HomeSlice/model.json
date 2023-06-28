@@ -12,34 +12,21 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Title",
-            "placeholder": "Je suis le titre",
-            "allowTargetBlank": true,
-            "single": "heading1"
-          }
+        "slicetitle": {
+          "type": "Text",
+          "config": { "label": "SliceTitle", "placeholder": "" }
         },
-        "description": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Description",
-            "placeholder": "Je suis la description",
-            "allowTargetBlank": true,
-            "single": "paragraph"
-          }
-        },
-        "blogimage": {
-          "type": "Image",
-          "config": {
-            "label": "BlogImage",
-            "constraint": { "width": null },
-            "thumbnails": []
-          }
+        "slicedescription": {
+          "type": "Text",
+          "config": { "label": "SliceDescription", "placeholder": "" }
         }
       },
-      "items": {}
+      "items": {
+        "blogimage": {
+          "type": "Image",
+          "config": { "label": "BlogImage", "constraint": {}, "thumbnails": [] }
+        }
+      }
     }
   ]
 }

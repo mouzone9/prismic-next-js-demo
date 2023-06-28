@@ -8,27 +8,49 @@ type Simplify<T> = {
 /** Content for Home documents */
 interface HomeDocumentData {
   /**
-   * Domain field in *Home*
+   * Title field in *Home*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.domain
+   * - **API ID Path**: home.title
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  domain: prismic.RichTextField;
+  title: prismic.RichTextField;
   /**
-   * Test field in *Home*
+   * Title2 field in *Home*
    *
-   * - **Field Type**: Text
+   * - **Field Type**: Title
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.test
+   * - **API ID Path**: home.title2
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
    *
    */
-  test: prismic.KeyTextField;
+  title2: prismic.TitleField;
+  /**
+   * Pix field in *Home*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.pix
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  pix: prismic.ImageField<never>;
+  /**
+   * Text field in *Home*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.test[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/group
+   *
+   */
+  test: prismic.GroupField<Simplify<HomeDocumentDataTestItem>>;
   /**
    * Slice Zone field in *Home*
    *
@@ -73,6 +95,32 @@ interface HomeDocumentData {
    *
    */
   meta_title: prismic.KeyTextField;
+}
+/**
+ * Item in Home → Text
+ *
+ */
+export interface HomeDocumentDataTestItem {
+  /**
+   * Text1 field in *Home → Text*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.test[].text1
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  text1: prismic.KeyTextField;
+  /**
+   * text2 field in *Home → Text*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.test[].text2
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  text2: prismic.KeyTextField;
 }
 /**
  * Slice for *Home → Slice Zone*
@@ -222,31 +270,37 @@ export type AllDocumentTypes =
  */
 interface HomeSliceSliceDefaultPrimary {
   /**
-   * Title field in *HomeSlice → Primary*
+   * SliceTitle field in *HomeSlice → Primary*
    *
-   * - **Field Type**: Title
-   * - **Placeholder**: Je suis le titre
-   * - **API ID Path**: home_slice.primary.title
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  title: prismic.TitleField;
-  /**
-   * Description field in *HomeSlice → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: Je suis la description
-   * - **API ID Path**: home_slice.primary.description
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_slice.primary.slicetitle
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
-  description: prismic.RichTextField;
+  slicetitle: prismic.KeyTextField;
   /**
-   * BlogImage field in *HomeSlice → Primary*
+   * SliceDescription field in *HomeSlice → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_slice.primary.slicedescription
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  slicedescription: prismic.KeyTextField;
+}
+/**
+ * Item in HomeSlice → Items
+ *
+ */
+export interface HomeSliceSliceDefaultItem {
+  /**
+   * BlogImage field in *HomeSlice → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: home_slice.primary.blogimage
+   * - **API ID Path**: home_slice.items[].blogimage
    * - **Documentation**: https://prismic.io/docs/core-concepts/image
    *
    */
@@ -263,7 +317,7 @@ interface HomeSliceSliceDefaultPrimary {
 export type HomeSliceSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<HomeSliceSliceDefaultPrimary>,
-  never
+  Simplify<HomeSliceSliceDefaultItem>
 >;
 /**
  * Slice variation for *HomeSlice*
@@ -371,6 +425,7 @@ declare module "@prismicio/client" {
   namespace Content {
     export type {
       HomeDocumentData,
+      HomeDocumentDataTestItem,
       HomeDocumentDataSlicesSlice,
       HomeDocument,
       HomeCustomTypeDocumentData,
@@ -381,6 +436,7 @@ declare module "@prismicio/client" {
       NavigationDocument,
       AllDocumentTypes,
       HomeSliceSliceDefaultPrimary,
+      HomeSliceSliceDefaultItem,
       HomeSliceSliceDefault,
       HomeSliceSliceVariation,
       HomeSliceSlice,

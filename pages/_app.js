@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { PrismicProvider } from '@prismicio/react';
 import { PrismicPreview } from '@prismicio/next';
 import { repositoryName } from '../prismicio';
-import '../styles/index.css'
+import '../styles/global.css'
 
 const richTextComponents = {
   heading1: ({ children }) => (

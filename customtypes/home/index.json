@@ -6,22 +6,47 @@
   "status": true,
   "json": {
     "Main": {
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading1,heading3,heading2,heading4,heading5,heading6"
+        }
+      },
+      "title2": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Title2",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1,heading2,heading3,heading4,heading5,heading6"
+        }
+      },
       "uid": {
         "type": "UID",
         "config": { "label": "homeId", "placeholder": "" }
       },
-      "domain": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Domain",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "paragraph"
-        }
+      "pix": {
+        "type": "Image",
+        "config": { "label": "Pix", "constraint": {}, "thumbnails": [] }
       },
       "test": {
-        "type": "Text",
-        "config": { "label": "Test", "placeholder": "" }
+        "type": "Group",
+        "config": {
+          "label": "Text",
+          "fields": {
+            "text1": {
+              "type": "Text",
+              "config": { "label": "Text1", "placeholder": "" }
+            },
+            "text2": {
+              "type": "Text",
+              "config": { "label": "text2", "placeholder": "" }
+            }
+          }
+        }
       },
       "slices": {
         "type": "Slices",

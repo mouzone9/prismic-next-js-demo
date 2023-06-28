@@ -8,13 +8,14 @@ import { useEffect } from "react";
  * @param {HomeSliceProps}
  */
 const HomeSlice = ({ slice }) => {
+    cons
     return (
     <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
     >
         <PrismicRichText field={slice.primary.title}/>
-        <PrismicRichText field={slice.primary.description}/>
+        <PrismicRichText field={slice.primary.Text}/>
     </section>
     );
 };

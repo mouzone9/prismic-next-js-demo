@@ -1,9 +1,9 @@
 import Navbar from "../components/bricComponents/Navbar"
 
-const About = () => {
+const Contact = () => {
     return <>
         <Navbar />
     </>
 }
 
-export default About
+export default Contact
