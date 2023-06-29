@@ -1,11 +1,10 @@
 import { PrismicNextImage } from "@prismicio/next";
 
-const NextImage = ({ className, alt, field, priority }) => {
+const SingleNextImage = ({ className, alt, field, priority }) => {
     return (
         field && (
-            <div>
+            <div className={className}>
                 <PrismicNextImage
-                    className={className}
                     alt={alt} 
                     field={field} 
                     priority={priority}
@@ -15,4 +14,4 @@ const NextImage = ({ className, alt, field, priority }) => {
     )
 }
 
-export default NextImage
+export default SingleNextImage

@@ -1,6 +1,13 @@
-import { PrismicRichText } from "@prismicio/react";
+import React from "react";
+import { createClient } from "../../prismicio";
+import { components } from "../../slices";
+import { SliceZone } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import { useEffect } from "react";
+import RichText from "../../components/RichText";
+import SliceGallery from "../../components/bricComponents/SliceGallery";
+import SingleNextImage from "../../components/SingleNextImage";
+import Layout from "../../components/PageComponents/Layout";
+
 
 /**
  * @typedef {import("@prismicio/client").Content.HomeSliceSlice} HomeSliceSlice
@@ -8,14 +15,12 @@ import { useEffect } from "react";
  * @param {HomeSliceProps}
  */
 const HomeSlice = ({ slice }) => {
-    cons
+    console.log(slice)
     return (
     <section
         data-slice-type={slice.slice_type}
         data-slice-variation={slice.variation}
     >
-        <PrismicRichText field={slice.primary.title}/>
-        <PrismicRichText field={slice.primary.Text}/>
     </section>
     );
 };
