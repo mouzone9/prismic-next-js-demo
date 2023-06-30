@@ -12,6 +12,10 @@
         "config": {
           "label": "card",
           "fields": {
+            "slug": {
+              "type": "Text",
+              "config": { "label": "slug", "placeholder": "" }
+            },
             "cardname": {
               "type": "Text",
               "config": { "label": "cardname", "placeholder": "" }

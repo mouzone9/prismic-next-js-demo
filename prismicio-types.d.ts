@@ -570,6 +570,16 @@ interface ServicesDocumentData {
  */
 export interface ServicesDocumentDataCardItem {
   /**
+   * slug field in *Services → card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: services.card[].slug
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  slug: prismic.KeyTextField;
+  /**
    * cardname field in *Services → card*
    *
    * - **Field Type**: Text

@@ -1,10 +1,14 @@
 import Footer from "../bricComponents/Footer";
 import Navbar from "../bricComponents/Navbar";
 
-const Layout = () => {
+const Layout = ({navbar}) => {
+    if(!navbar) {
+        return null;
+    }
+
     return <>
         <Footer />
-        <Navbar />
+        <Navbar navbar={navbar} />
     </>
 }
 

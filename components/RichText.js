@@ -1,7 +1,6 @@
 import { PrismicRichText } from "@prismicio/react";
 
 const RichText = ({ field, className, components }) => {
-    console.log(components)
     return (
         field && (
             <div className={className}>

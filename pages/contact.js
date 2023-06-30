@@ -1,7 +1,10 @@
-import Layout from "../components/PageComponents/Layout"
+import Layout           from "../components/PageComponents/Layout"
 import { createClient } from "../prismicio"
 
-const Contact = ({contact}) => {
+const Contact = ({contact, navbar}) => {
+    if(!contact && !navbar) {
+        return null;
+    }
 
     const text = contact?.data?.formtext[0]
 
@@ -73,22 +76,23 @@ const Contact = ({contact}) => {
                 </section>
             </div>
         </div>
-        <Layout />
+        <Layout navbar={navbar}/>
     </>
 }
 
 export default Contact
-
 
 export async function getStaticProps({ previewData }) {
 
     const client = createClient({ previewData });
 
     const contact = await client.getSingle('contact');
-  
+    const navbar = await client.getSingle('navigation');
+
     return {
-      props: {
-        contact,
-      },
+        props: {
+            contact,
+            navbar
+        },
     };
 }

@@ -1,16 +1,20 @@
-import React from "react";
-import { createClient } from "../prismicio";
-import { components } from "../slices";
-import { SliceZone } from "@prismicio/react";
+import React                from "react";
+import { createClient }     from "../prismicio";
+import { components }       from "../slices";
+import { SliceZone }        from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
-import RichText from "../components/RichText";
-import SliceGallery from "../components/bricComponents/SliceGallery";
-import SingleNextImage from "../components/SingleNextImage";
-import Layout from "../components/PageComponents/Layout";
+import RichText             from "../components/RichText";
+import SliceGallery         from "../components/bricComponents/SliceGallery";
+import SingleNextImage      from "../components/SingleNextImage";
+import Layout               from "../components/PageComponents/Layout";
 
-const Home = ({home}) => {
+const Home = ({home, navbar}) => {
+    if(!home && !navbar) {
+        return null;
+    }
+
     const text = home?.data?.test[0]
-    console.log(home?.data?.slices?.[0]?.items)
+
     return <>
         <div className="container mx-auto px-4">
             <div className="space-y-96">
@@ -32,7 +36,7 @@ const Home = ({home}) => {
                 </section>
             </div>
         </div>
-        <Layout />
+        <Layout navbar={navbar}/>
     </>
 }
 
@@ -43,10 +47,12 @@ export async function getStaticProps({ previewData }) {
     const client = createClient({ previewData });
 
     const home = await client.getSingle('home');
-  
+    const navbar = await client.getSingle('navigation');
+    
     return {
         props: {
             home,
+            navbar
         },
     };
 }

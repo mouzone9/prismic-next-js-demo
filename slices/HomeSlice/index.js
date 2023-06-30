@@ -15,7 +15,6 @@ import Layout from "../../components/PageComponents/Layout";
  * @param {HomeSliceProps}
  */
 const HomeSlice = ({ slice }) => {
-    console.log(slice)
     return (
     <section
         data-slice-type={slice.slice_type}

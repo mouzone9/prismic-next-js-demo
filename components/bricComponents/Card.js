@@ -1,12 +1,31 @@
-import React from "react"
+import React           from "react"
 import SingleNextImage from "../SingleNextImage"
-import RichText from "../RichText"
-import NextImage from "../NextImage"
+import RichText        from "../RichText"
+import NextImage       from "../NextImage"
+import { useRouter }   from "next/router"
+import {stringify}     from "flatted"
 
-const Card = ({slices}) => {
+const Card = ({slices, navbar}) => {
+    if (!slices && navbar) {
+        return null;
+    }
+
+    const router = useRouter()
+
+    const goToSingleService = (serviceData) => {
+        const serializedData = stringify(serviceData);
+        const SerializedNavbar = stringify(navbar)
+        localStorage.setItem("singleService", serializedData)
+        localStorage.setItem("navbar", SerializedNavbar)
+        router.push(`/service/${serviceData.slug}`);
+    }
+
     return <div className="flex flex-wrap -mx-2 justify-center items-center">
        {slices.map((slice, i) => {
-            return <div key={i} className="grid m-2 p-2 grid-cols-1 hover:grid-cols-6">
+            return <div 
+                    onClick={()=> goToSingleService(slice)} 
+                    key={i} 
+                    className="grid m-2 p-2 grid-cols-1 hover:grid-cols-6">
                 <a className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                     <NextImage
                         priority={false}

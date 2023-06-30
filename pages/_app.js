@@ -1,7 +1,7 @@
-import Link from 'next/link';
+import Link                from 'next/link';
 import { PrismicProvider } from '@prismicio/react';
-import { PrismicPreview } from '@prismicio/next';
-import { repositoryName } from '../prismicio';
+import { PrismicPreview }  from '@prismicio/next';
+import { repositoryName }  from '../prismicio';
 import '../styles/global.css'
 
 const richTextComponents = {
@@ -18,12 +18,12 @@ const richTextComponents = {
 export default function App({ Component, pageProps }) {
   return (
     <PrismicProvider
-      internalLinkComponent={(props) => <Link {...props} />}
-      richTextComponents={richTextComponents}
+        internalLinkComponent={(props) => <Link {...props} />}
+        richTextComponents={richTextComponents}
     >
-      <PrismicPreview repositoryName={repositoryName}>
+        <PrismicPreview repositoryName={repositoryName}>
         <Component {...pageProps} />
-      </PrismicPreview>
+        </PrismicPreview>
     </PrismicProvider>
   );
 }

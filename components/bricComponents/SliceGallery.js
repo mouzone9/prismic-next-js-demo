@@ -1,7 +1,11 @@
 import { Carousel } from "@material-tailwind/react"
-import NextImage from "../NextImage"
+import NextImage    from "../NextImage"
 
 const SliceGallery = ({slices}) => {
+    if (!slices) {
+        return null;
+    }
+
     return <>
         <div className="flex flex-wrap -mx-2 justify-center items-center">
             {slices?.items?.map((item, i) => {
